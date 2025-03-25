@@ -1,5 +1,209 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Jayesh Patel - Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-Hello there.
+    <header>
+        <div class="container">
+            <h1>Dev Jayesh Patel</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to My World</h2>
+            <p>Hi, I’m Dev Jayesh Patel, a passionate developer creating innovative solutions.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <div class="mouse-follower"></div> <!-- Moved outside the section for global scope -->
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Dev Jayesh Patel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        /* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative; /* Ensure body is the positioning context */
+}
+
+/* Container for consistent width */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+/* Hero section */
+#hero {
+    background-color: #f4f4f4;
+    padding: 100px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-position 0.1s ease;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #f4f4f4, #e0e0e0);
+    z-index: -1;
+}
+
+#hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* Mouse follower element */
+.mouse-follower {
+    position: fixed; /* Changed to fixed for global mouse tracking */
+    width: 20px;
+    height: 20px;
+    background-color: rgba(51, 51, 51, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%); /* Center the dot on the cursor */
+    z-index: 1000; /* Ensure it’s above other elements */
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    #hero h2 {
+        font-size: 2rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+    }
+
+    .mouse-follower {
+        display: none; /* Hide on mobile */
+    }
+}
+    </style>
+
+    <script>
+        // Parallax effect for hero section background
+document.addEventListener('mousemove', (e) => {
+    const hero = document.querySelector('#hero');
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    hero.style.backgroundPosition = `${mouseX * 20}px ${mouseY * 20}px`;
+});
+
+// Mouse follower
+const follower = document.querySelector('.mouse-follower');
+document.addEventListener('mousemove', (e) => {
+    const x = e.clientX; // Use clientX for viewport-based positioning
+    const y = e.clientY;
+    follower.style.transform = `translate(${x}px, ${y}px)`; // Update position
+});
+    </script>
 </body>
 </html>
